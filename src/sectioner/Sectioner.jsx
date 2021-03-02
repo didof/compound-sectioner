@@ -1,5 +1,7 @@
 import React from 'react'
 
+import SectionerBuilder from './builder/SectionerBuilder'
+
 import { Tabs, Tab } from './tabs'
 import { Sections, Section } from './sections'
 
@@ -75,8 +77,16 @@ class Sectioner extends React.Component {
   }
 
   render() {
-    console.log(this.state)
-    return <div>Sectioner</div>
+    const { width, height } = this.props
+    const { tabs, sections } = this.state
+    return (
+      <SectionerBuilder
+        width={width}
+        height={height}
+        tabs={tabs}
+        sections={sections}
+      />
+    )
   }
 }
 
