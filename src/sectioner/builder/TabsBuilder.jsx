@@ -2,12 +2,24 @@ import React from 'react'
 
 import Tab from '../tabs/Tab'
 
-const TabsBuilder = ({ tabs }) => {
+const TabsBuilder = ({ tabs, activeIndex, onClick }) => {
+  const style = {}
+
   return (
-    <nav>
-      {tabs.map((element, index) => (
-        <Tab key={index}>{element}</Tab>
-      ))}
+    <nav style={style}>
+      <ul>
+        {tabs.map((element, index) => {
+          return (
+            <Tab
+              key={index}
+              isActive={activeIndex === index}
+              onClick={onClick.bind(null, index)}
+            >
+              {element}
+            </Tab>
+          )
+        })}
+      </ul>
     </nav>
   )
 }

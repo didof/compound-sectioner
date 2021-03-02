@@ -1,0 +1,17 @@
+.sectioner-tab {
+  background-color: orange;
+  padding: 10px;
+  text-align: center;
+  cursor: pointer;
+}
+
+.sectioner-tab.active {
+  background-color: gold;
+  padding: 10px;
+  text-align: center;
+  cursor: pointer;
+}
+
+.sectioner-tab:hover {
+  background-color: yellow;
+}
