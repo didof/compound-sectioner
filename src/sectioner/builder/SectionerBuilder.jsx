@@ -18,8 +18,14 @@ const SectionerBuilder = ({
 
   const [activeIndex, setActiveIndex] = useState(0)
   const listener = useRef([])
+  const heights = useRef([])
+  const priority = useRef()
 
-  const handleOnTabClick = index => setActiveIndex(index)
+  const handleOnTabClick = index => {
+    console.log('click', index)
+    priority.current = true
+    setActiveIndex(index)
+  }
 
   const handleEnter = index => {
     if (listener) {
@@ -37,7 +43,19 @@ const SectionerBuilder = ({
 
   const setFirstInView = () => {
     const first = listener.current.indexOf(true)
-    if (first !== activeIndex) setActiveIndex(first)
+    if (!priority.current && first !== activeIndex) setActiveIndex(first)
+  }
+
+  const informOfHeight = (index, height) => {
+    heights.current[index] = height
+  }
+
+  const handleScroll = node => {
+    if (node) {
+      node.addEventListener('scroll', () => {
+        priority.current = false
+      })
+    }
   }
 
   return (
@@ -50,9 +68,11 @@ const SectionerBuilder = ({
       <SectionsBuilder
         height={height}
         sections={sections}
-        activeIndex={activeIndex}
+        scrollH={priority.current && heights.current[activeIndex]}
+        onScroll={handleScroll}
         onEnter={handleEnter}
         onLeave={handleLeave}
+        onSectionMount={informOfHeight}
       />
     </div>
   )

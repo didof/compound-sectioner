@@ -1,8 +1,8 @@
-import { useRef } from 'react'
+import { useEffect, useRef } from 'react'
 import './style.css'
 import useIO from '../../hooks/useIO'
 
-const Section = ({ children, title, onEnter, onLeave }) => {
+const Section = ({ children, title, onEnter, onLeave, onSectionMount }) => {
   const elRef = useRef()
   const { isVisible } = useIO(elRef)
 
@@ -11,6 +11,11 @@ const Section = ({ children, title, onEnter, onLeave }) => {
   } else {
     onLeave()
   }
+
+  useEffect(() => {
+    const { y } = elRef.current.getBoundingClientRect()
+    onSectionMount(y)
+  }, [])
 
   return (
     <section className='sectioner-section' ref={elRef}>

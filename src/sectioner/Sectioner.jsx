@@ -47,7 +47,7 @@ class Sectioner extends React.Component {
         React.Children.forEach(child.props.children, child => {
           const { name } = child.type
 
-          if (!name) ErrorBuilder.childTypeDepth2(name)
+          // if (!name) ErrorBuilder.childTypeDepth2(name)
 
           if (['Tabs', 'Sections', 'Section'].includes(name))
             ErrorBuilder.childTypeNotAllowed(name)
@@ -60,7 +60,7 @@ class Sectioner extends React.Component {
         React.Children.forEach(child.props.children, child => {
           const { name } = child.type
 
-          if (!name) ErrorBuilder.childTypeDepth2(name)
+          // if (!name) ErrorBuilder.childTypeDepth2(name)
 
           if (['Tabs', 'Sections', 'Tab'].includes(name))
             ErrorBuilder.childTypeNotAllowed(name)
