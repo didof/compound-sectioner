@@ -18,7 +18,7 @@ const App = () => {
 
   return (
     <div style={styleCenter}>
-      <S height='80%'>
+      <S width='80%' height='80%'>
         <S.Tabs>
           <S.Tab>Section 1</S.Tab>
           <S.Tab>Section 2</S.Tab>

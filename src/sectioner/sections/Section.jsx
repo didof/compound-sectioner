@@ -13,8 +13,8 @@ const Section = ({ children, title, onEnter, onLeave, onSectionMount }) => {
   }
 
   useEffect(() => {
-    const { y } = elRef.current.getBoundingClientRect()
-    onSectionMount(y)
+    const { height } = elRef.current.getBoundingClientRect()
+    onSectionMount(height)
   }, [])
 
   return (

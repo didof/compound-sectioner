@@ -18,11 +18,10 @@ const SectionerBuilder = ({
 
   const [activeIndex, setActiveIndex] = useState(0)
   const listener = useRef([])
-  const heights = useRef([])
+  const heights = useRef([0])
   const priority = useRef()
 
   const handleOnTabClick = index => {
-    console.log('click', index)
     priority.current = true
     setActiveIndex(index)
   }
@@ -47,7 +46,9 @@ const SectionerBuilder = ({
   }
 
   const informOfHeight = (index, height) => {
-    heights.current[index] = height
+    console.log(index, height)
+    heights.current[index + 1] = height + heights.current[index]
+    console.log(heights.current)
   }
 
   const handleScroll = node => {

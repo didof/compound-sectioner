@@ -15,14 +15,18 @@ const SectionsBuilder = ({
     height,
   }
 
-  const elRef = useRef()
-
   let el
   useEffect(() => {
+    if (scrollH === 0) {
+      el = document.getElementById('scrollable')
+      el.scrollTo({
+        top: 0,
+        behavior: 'smooth',
+      })
+    }
     if (!scrollH || isNaN(scrollH * 1)) return
     if (!el) {
       el = document.getElementById('scrollable')
-      console.log(scrollH)
       el.scrollTo({
         top: scrollH,
         behavior: 'smooth',
